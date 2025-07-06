@@ -2,9 +2,9 @@ vCard - Personal Portfolio
 
 # sidebar
 
-alt = Richard hanrick
-Richard hanrick
-Web developer
+alt = Rajni Gediya
+Rajni Gediya
+Software Engineer
 
 Show Contacts
 
