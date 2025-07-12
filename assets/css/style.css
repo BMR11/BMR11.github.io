@@ -336,6 +336,37 @@ main {
   border-radius: 20px;
 }
 
+.avatar-box img {
+  max-width: 80px;
+  max-height: 80px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (min-width: 580px) {
+  .avatar-box img {
+    max-width: 120px;
+    max-height: 120px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .avatar-box img {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  .sidebar-info_more {
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding-bottom: 2em !important;
+  }
+}
+
 .info-content .name {
   color: var(--white-2);
   font-size: var(--fs-3);
@@ -390,11 +421,19 @@ main {
   opacity: 0;
   visibility: hidden;
   transition: var(--transition-2);
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: 0;
 }
 
 .sidebar.active .sidebar-info_more {
   opacity: 1;
   visibility: visible;
+  height: auto;
+  min-height: 200px;
+  overflow: visible;
+  padding-bottom: 2em;
 }
 
 .contacts-list {
