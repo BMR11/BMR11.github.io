@@ -2,23 +2,17 @@ vCard - Personal Portfolio
 
 # sidebar
 
-alt = Richard hanrick
-Richard hanrick
-Web developer
+alt = Rajni Gediya
+Rajni Gediya
+Software Engineer
 
 Show Contacts
 
 Email
-richard@example.com
-
-Phone
-+1 (213) 352-2795
-
-Birthday
-June 23, 1982
+rajnibhaimgediya@gmail.com
 
 Location
-Sacramento, California, USA
+San Diego, California, USA
 
 # navbar
 
