@@ -18,63 +18,64 @@
 :root {
 
   /**
-   * colors
+   * retro connectivity theme colors
    */
 
   /* gradient */
 
   --bg-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(240, 1%, 25%) 3%, 
-    hsl(0, 0%, 19%) 97%
+    to bottom right,
+    #1a0033 3%,
+    #000000 97%
   );
   --bg-gradient-jet: linear-gradient(
-    to bottom right, 
-    hsla(240, 1%, 18%, 0.251) 0%, 
-    hsla(240, 2%, 11%, 0) 100%
-  ), hsl(240, 2%, 13%);
+    to bottom right,
+    rgba(26, 0, 51, 0.4) 0%,
+    rgba(0, 0, 0, 0) 100%
+  ), #0d001a;
   --bg-gradient-yellow-1: linear-gradient(
-    to bottom right, 
-    hsl(45, 100%, 71%) 0%, 
-    hsla(36, 100%, 69%, 0) 50%
+    to bottom right,
+    #ff00f0 0%,
+    rgba(255, 0, 240, 0) 50%
   );
   --bg-gradient-yellow-2: linear-gradient(
-    135deg, 
-    hsla(45, 100%, 71%, 0.251) 0%, 
-    hsla(35, 100%, 68%, 0) 59.86%
-  ), hsl(240, 2%, 13%);
+    135deg,
+    rgba(0, 255, 234, 0.25) 0%,
+    rgba(0, 255, 234, 0) 60%
+  ), #0d001a;
   --border-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(0, 0%, 25%) 0%, 
-    hsla(0, 0%, 25%, 0) 50%
+    to bottom right,
+    #00ffea 0%,
+    rgba(0, 255, 234, 0) 50%
   );
   --text-gradient-yellow: linear-gradient(
-    to right, 
-    hsl(45, 100%, 72%), 
-    hsl(35, 100%, 68%)
+    to right,
+    #00ffea,
+    #ff00f0
   );
 
   /* solid */
 
-  --jet: hsl(0, 0%, 22%);
-  --onyx: hsl(240, 1%, 17%);
-  --eerie-black-1: hsl(240, 2%, 13%);
-  --eerie-black-2: hsl(240, 2%, 12%);
-  --smoky-black: hsl(0, 0%, 7%);
-  --white-1: hsl(0, 0%, 100%);
-  --white-2: hsl(0, 0%, 98%);
-  --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
-  --light-gray: hsl(0, 0%, 84%);
-  --light-gray-70: hsla(0, 0%, 84%, 0.7);
-  --bittersweet-shimmer: hsl(0, 43%, 51%);
+  --jet: #221133;
+  --onyx: #1a0d26;
+  --eerie-black-1: #0d001a;
+  --eerie-black-2: #0a0014;
+  --smoky-black: #000000;
+  --white-1: #f0f0f0;
+  --white-2: #f8f8f8;
+  --orange-yellow-crayola: #00ffea;
+  --vegas-gold: #ff00f0;
+  --light-gray: #b3b3b3;
+  --light-gray-70: rgba(179, 179, 179, 0.7);
+  --bittersweet-shimmer: #ff5c8a;
+  --grid-color: rgba(0, 255, 234, 0.15);
 
   /**
    * typography
    */
 
   /* font-family */
-  --ff-poppins: 'Poppins', sans-serif;
+  --ff-poppins: 'VT323', monospace;
 
   /* font-size */
   --fs-1: 24px;
@@ -155,7 +156,33 @@ input, textarea {
 
 html { font-family: var(--ff-poppins); }
 
-body { background: var(--smoky-black); }
+body {
+  background-color: var(--smoky-black);
+  color: var(--white-1);
+  background-image:
+    radial-gradient(circle at 1px 1px, var(--grid-color) 1px, transparent 0),
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 40px 40px;
+  background-attachment: fixed;
+  animation: grid-move 20s linear infinite;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.name,
+.navbar-link {
+  font-family: 'Press Start 2P', cursive;
+}
+
+@keyframes grid-move {
+  from { background-position: 0 0, 0 0, 0 0; }
+  to { background-position: 40px 40px, 40px 40px, 40px 40px; }
+}
 
 
 
