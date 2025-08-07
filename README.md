@@ -1,8 +1,5 @@
 # 👋 Hey there, I'm Rajni
 
-<img src="./assets/images/rajni-pic.jpeg" alt="Rajni Gediya" width="100" style="border-radius: 100%;" />
-
-
 **Staff Engineer | Cross-Platform App & BLE Enthusiast**  
 
 ---
