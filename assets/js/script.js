@@ -156,3 +156,66 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
   });
 }
+
+
+
+// Google Analytics 4 - Automatic Button Click Tracking
+// This code automatically tracks all button clicks and links with class "button"
+(function() {
+  // Function to send button click event to GA4
+  function trackButtonClick(element) {
+    // Check if gtag is available
+    if (typeof gtag === 'undefined') {
+      return;
+    }
+
+    // Extract button information
+    const buttonText = element.textContent.trim() || element.innerText.trim() || 'Unknown';
+    const buttonId = element.id || 'no-id';
+    const buttonClass = element.className || 'no-class';
+    const buttonType = element.tagName.toLowerCase();
+    const buttonHref = element.href || 'N/A';
+    
+    // Get the page path for context
+    const pagePath = window.location.pathname;
+    
+    // Send event to GA4
+    gtag('event', 'button_click', {
+      'button_text': buttonText.substring(0, 100), // Limit text length
+      'button_id': buttonId,
+      'button_class': buttonClass,
+      'button_type': buttonType,
+      'button_href': buttonHref,
+      'page_path': pagePath,
+      'event_category': 'Button Interaction',
+      'event_label': buttonText.substring(0, 100)
+    });
+  }
+
+  // Use event delegation to catch all button clicks (including dynamically added buttons)
+  document.addEventListener('click', function(event) {
+    const target = event.target;
+    
+    // Track all <button> elements
+    if (target.tagName === 'BUTTON') {
+      trackButtonClick(target);
+    }
+    
+    // Track all <a> elements with class "button"
+    if (target.tagName === 'A' && target.classList.contains('button')) {
+      trackButtonClick(target);
+    }
+    
+    // Also check if the clicked element is inside a button or button-link
+    const buttonParent = target.closest('button');
+    if (buttonParent) {
+      trackButtonClick(buttonParent);
+      return;
+    }
+    
+    const linkButtonParent = target.closest('a.button');
+    if (linkButtonParent) {
+      trackButtonClick(linkButtonParent);
+    }
+  });
+})();
