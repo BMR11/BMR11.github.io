@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    // This script handles GitHub Pages SPA routing
+    // When someone navigates directly to /blog or /talks, GitHub shows 404
+    // This script redirects to index.html while preserving the path
+    
+    const path = window.location.pathname;
+    const validRoutes = ['/about', '/blog', '/talks'];
+    
+    // Check if the path is a valid route
+    const cleanPath = path.replace(/\/$/, ''); // Remove trailing slash
+    
+    if (validRoutes.includes(cleanPath.toLowerCase())) {
+      // Redirect to home page with the route stored in sessionStorage
+      sessionStorage.setItem('redirect_path', cleanPath);
+      window.location.replace('/');
+    } else {
+      // For truly invalid paths, redirect to home
+      window.location.replace('/');
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>

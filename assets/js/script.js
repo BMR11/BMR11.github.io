@@ -140,20 +140,86 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
+// Navigate to a specific page/section
+function navigateToPage(pageName, updateHistory = true) {
+  const targetPage = pageName.toLowerCase();
+  
+  for (let j = 0; j < pages.length; j++) {
+    if (targetPage === pages[j].dataset.page) {
+      pages[j].classList.add("active");
+    } else {
+      pages[j].classList.remove("active");
+    }
+  }
+  
+  // Update active state on nav links
+  navigationLinks.forEach(link => {
+    if (link.innerHTML.trim().toLowerCase() === targetPage) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+  
+  // Update URL using History API
+  if (updateHistory) {
+    const newPath = targetPage === 'about' ? '/' : '/' + targetPage;
+    window.history.pushState({ page: targetPage }, '', newPath);
+  }
+  
+  window.scrollTo(0, 0);
+}
+
+// Get page name from URL path
+function getPageFromURL() {
+  const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+  // Valid pages in the navigation
+  const validPages = ['about', 'blog', 'talks'];
+  
+  if (path === '' || path === 'index.html') {
+    return 'about';
+  }
+  
+  if (validPages.includes(path.toLowerCase())) {
+    return path.toLowerCase();
+  }
+  
+  return 'about'; // default fallback
+}
+
+// Handle browser back/forward navigation
+window.addEventListener('popstate', function(event) {
+  if (event.state && event.state.page) {
+    navigateToPage(event.state.page, false);
+  } else {
+    navigateToPage(getPageFromURL(), false);
+  }
+});
+
+// Initialize page based on URL on load
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if we were redirected from 404.html
+  const redirectPath = sessionStorage.getItem('redirect_path');
+  if (redirectPath) {
+    sessionStorage.removeItem('redirect_path');
+    const pageName = redirectPath.replace(/^\//, '').toLowerCase() || 'about';
+    navigateToPage(pageName, false);
+    // Update URL to show the correct path
+    const newPath = pageName === 'about' ? '/' : '/' + pageName;
+    window.history.replaceState({ page: pageName }, '', newPath);
+  } else {
+    const initialPage = getPageFromURL();
+    navigateToPage(initialPage, false);
+    // Replace current history entry with proper state
+    window.history.replaceState({ page: initialPage }, '', window.location.pathname);
+  }
+});
+
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-    for (let j = 0; j < pages.length; j++) {
-      if (this.innerHTML.trim().toLowerCase() === pages[j].dataset.page) {
-        pages[j].classList.add("active");
-        // Remove 'active' from all nav links first
-        navigationLinks.forEach(link => link.classList.remove("active"));
-        this.classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[j].classList.remove("active");
-      }
-    }
+    const pageName = this.innerHTML.trim().toLowerCase();
+    navigateToPage(pageName, true);
   });
 }
 
