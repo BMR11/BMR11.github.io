@@ -4,24 +4,22 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    // This script handles GitHub Pages SPA routing
-    // When someone navigates directly to /blog or /talks, GitHub shows 404
-    // This script redirects to index.html while preserving the path
+    // Single Page Apps for GitHub Pages
+    // https://github.com/rafgraph/spa-github-pages
+    // This script takes the current URL and converts the path and query
+    // into just a query string, then redirects to the home page with that query string.
+    // The home page script then converts it back to the proper URL.
     
-    const path = window.location.pathname;
-    const validRoutes = ['/about', '/blog', '/talks'];
+    var pathSegmentsToKeep = 0; // for project pages, set to 1 if using username.github.io/repo-name
     
-    // Check if the path is a valid route
-    const cleanPath = path.replace(/\/$/, ''); // Remove trailing slash
-    
-    if (validRoutes.includes(cleanPath.toLowerCase())) {
-      // Redirect to home page with the route stored in sessionStorage
-      sessionStorage.setItem('redirect_path', cleanPath);
-      window.location.replace('/');
-    } else {
-      // For truly invalid paths, redirect to home
-      window.location.replace('/');
-    }
+    var l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
   </script>
 </head>
 <body>

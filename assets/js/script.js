@@ -198,21 +198,11 @@ window.addEventListener('popstate', function(event) {
 
 // Initialize page based on URL on load
 document.addEventListener('DOMContentLoaded', function() {
-  // Check if we were redirected from 404.html
-  const redirectPath = sessionStorage.getItem('redirect_path');
-  if (redirectPath) {
-    sessionStorage.removeItem('redirect_path');
-    const pageName = redirectPath.replace(/^\//, '').toLowerCase() || 'about';
-    navigateToPage(pageName, false);
-    // Update URL to show the correct path
-    const newPath = pageName === 'about' ? '/' : '/' + pageName;
-    window.history.replaceState({ page: pageName }, '', newPath);
-  } else {
-    const initialPage = getPageFromURL();
-    navigateToPage(initialPage, false);
-    // Replace current history entry with proper state
-    window.history.replaceState({ page: initialPage }, '', window.location.pathname);
-  }
+  const initialPage = getPageFromURL();
+  navigateToPage(initialPage, false);
+  // Replace current history entry with proper state
+  const currentPath = initialPage === 'about' ? '/' : '/' + initialPage;
+  window.history.replaceState({ page: initialPage }, '', currentPath);
 });
 
 // add event to all nav link
