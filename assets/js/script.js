@@ -219,6 +219,34 @@ for (let i = 0; i < navigationLinks.length; i++) {
 }
 
 
+// day / night theme toggle
+(function () {
+  const themeBtn = document.querySelector("[data-theme-toggle]");
+  if (!themeBtn) return;
+
+  function applyAria() {
+    const t = document.documentElement.getAttribute("data-theme");
+    themeBtn.setAttribute(
+      "aria-label",
+      t === "light" ? "Switch to dark theme" : "Switch to light theme"
+    );
+  }
+
+  applyAria();
+
+  themeBtn.addEventListener("click", function () {
+    const next =
+      document.documentElement.getAttribute("data-theme") === "light"
+        ? "dark"
+        : "light";
+    document.documentElement.setAttribute("data-theme", next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {}
+    applyAria();
+  });
+})();
+
 
 // Google Analytics 4 - Automatic Button Click Tracking
 // This code automatically tracks all button clicks and links with class "button"

@@ -2090,3 +2090,167 @@ textarea.form-input::-webkit-resizer { display: none; }
   .timeline-text { max-width: 700px; }
 
 }
+
+
+/*-----------------------------------*\
+  #THEME TOGGLE & LIGHT THEME
+\*-----------------------------------*/
+
+.theme-toggle {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top, 0px));
+  right: max(12px, env(safe-area-inset-right, 0px));
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font: inherit;
+  color: var(--orange-yellow-crayola);
+  background: var(--border-gradient-onyx);
+  border: 1px solid var(--jet);
+  box-shadow: var(--shadow-2);
+  transition: color var(--transition-1), transform var(--transition-1), box-shadow var(--transition-1);
+}
+
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: var(--eerie-black-1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  color: var(--orange-yellow-crayola);
+  box-shadow: var(--shadow-3);
+  transform: scale(1.04);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--orange-yellow-crayola);
+  outline-offset: 2px;
+}
+
+.theme-toggle-icon {
+  position: relative;
+  z-index: 1;
+  font-size: 22px;
+  color: var(--orange-yellow-crayola);
+}
+
+html:not([data-theme="light"]) .theme-toggle-sun { display: block; }
+
+html:not([data-theme="light"]) .theme-toggle-moon { display: none; }
+
+html[data-theme="light"] .theme-toggle-sun { display: none; }
+
+html[data-theme="light"] .theme-toggle-moon { display: block; }
+
+html[data-theme="light"] {
+  --bg-gradient-onyx: linear-gradient(
+    to bottom right,
+    hsl(220, 16%, 96%) 3%,
+    hsl(220, 14%, 92%) 97%
+  );
+  --bg-gradient-jet: linear-gradient(
+    to bottom right,
+    hsla(220, 16%, 88%, 0.4) 0%,
+    hsla(220, 20%, 96%, 0) 100%
+  ), hsl(220, 18%, 96%);
+  --bg-gradient-yellow-1: linear-gradient(
+    to bottom right,
+    hsl(220, 42%, 90%) 0%,
+    hsla(220, 38%, 94%, 0) 50%
+  );
+  --bg-gradient-yellow-2: linear-gradient(
+    135deg,
+    hsla(220, 40%, 90%, 0.45) 0%,
+    hsla(220, 35%, 96%, 0) 59.86%
+  ), hsl(220, 18%, 96%);
+  --border-gradient-onyx: linear-gradient(
+    to bottom right,
+    hsl(220, 12%, 82%) 0%,
+    hsla(220, 12%, 82%, 0) 50%
+  );
+  --orange-yellow-crayola: hsl(220, 58%, 49%);
+  --vegas-gold: hsl(220, 48%, 56%);
+  --text-gradient-yellow: linear-gradient(
+    to right,
+    hsl(220, 58%, 44%),
+    hsl(220, 55%, 52%)
+  );
+  --jet: hsl(220, 12%, 86%);
+  --onyx: hsl(220, 14%, 92%);
+  --eerie-black-1: hsl(0, 0%, 100%);
+  --eerie-black-2: hsl(220, 16%, 98%);
+  --smoky-black: hsl(220, 18%, 94%);
+  --white-1: hsl(220, 22%, 11%);
+  --white-2: hsl(220, 18%, 15%);
+  --light-gray: hsl(220, 12%, 30%);
+  --light-gray-70: hsla(220, 12%, 30%, 0.72);
+  --shadow-1: -4px 8px 24px hsla(220, 25%, 35%, 0.08);
+  --shadow-2: 0 16px 30px hsla(220, 25%, 35%, 0.1);
+  --shadow-3: 0 16px 40px hsla(220, 25%, 35%, 0.12);
+  --shadow-4: 0 25px 50px hsla(220, 25%, 35%, 0.1);
+  --shadow-5: 0 24px 80px hsla(220, 25%, 35%, 0.12);
+}
+
+html[data-theme="light"] .navbar {
+  background: hsla(220, 16%, 98%, 0.92);
+  border-color: var(--jet);
+}
+
+html[data-theme="light"] .blog-post-item > a {
+  background: linear-gradient(135deg, hsl(220, 14%, 94%) 80%, hsl(220, 35%, 91%) 100%);
+  border-color: hsla(220, 58%, 48%, 0.28);
+}
+
+html[data-theme="light"] .talk-post-item > a {
+  background: linear-gradient(135deg, hsl(220, 14%, 94%) 80%, hsl(220, 35%, 91%) 100%);
+}
+
+html[data-theme="light"] .navbar-link:not(.active) {
+  color: hsl(220, 8%, 46%);
+}
+
+html[data-theme="light"] .navbar-link:not(.active):hover,
+html[data-theme="light"] .navbar-link:not(.active):focus {
+  color: hsl(220, 12%, 38%);
+}
+
+html[data-theme="light"] .navbar-link.active:hover,
+html[data-theme="light"] .navbar-link.active:focus {
+  color: var(--orange-yellow-crayola);
+}
+
+html[data-theme="light"] ::selection {
+  background: hsl(220, 58%, 49%);
+  color: hsl(0, 0%, 100%);
+}
+
+html[data-theme="light"] .icon-box ion-icon,
+html[data-theme="light"] .social-link ion-icon {
+  color: var(--orange-yellow-crayola);
+}
+
+@media (min-width: 580px) {
+  .theme-toggle {
+    top: max(16px, env(safe-area-inset-top, 0px));
+    right: max(16px, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 1024px) {
+  .theme-toggle {
+    top: max(20px, env(safe-area-inset-top, 0px));
+    right: max(24px, env(safe-area-inset-right, 0px));
+  }
+}

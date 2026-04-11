@@ -54,6 +54,21 @@
 </head>
 
 <body>
+  <script>
+    try {
+      document.documentElement.setAttribute(
+        'data-theme',
+        localStorage.getItem('theme') === 'light' ? 'light' : 'dark'
+      );
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
+
+  <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme" title="Day / night theme">
+    <ion-icon name="sunny-outline" class="theme-toggle-icon theme-toggle-sun" aria-hidden="true"></ion-icon>
+    <ion-icon name="moon-outline" class="theme-toggle-icon theme-toggle-moon" aria-hidden="true"></ion-icon>
+  </button>
 
   <!--
     - #MAIN
