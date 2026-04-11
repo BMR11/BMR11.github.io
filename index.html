@@ -179,16 +179,16 @@
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button class="navbar-link  active" data-nav-link data-nav-target="about">About</button>
           </li>
 
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
+            <button class="navbar-link" data-nav-link data-nav-target="blog">Blog</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Talks</button>
+            <button class="navbar-link" data-nav-link data-nav-target="talks">Talks/Workshops</button>
           </li>
 
 
@@ -777,11 +777,66 @@
       <article class="talks" data-page="talks">
 
         <header>
-          <h2 class="h2 article-title">Talks</h2>
+          <h2 class="h2 article-title">Talks/Workshops</h2>
         </header>
 
         <section class="talks-list">
           <ul class="talks-posts-list">
+            <li class="talk-post-item">
+              <a href="https://gitnation.com/contents/from-async-chaos-to-deterministic-react-hands-on-state-machine-architecture-for-real-time-systems" target="_blank" rel="noopener noreferrer" class="talk-link">
+                <figure class="talk-banner-box">
+                  <img src="https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/v1619376923/fszvxiu9y2alolt9eymk.jpg?auto=format,compress&amp;fit=scale&amp;w=300"
+                    alt="React Summit 2026 — From Async Chaos to Deterministic React workshop" loading="lazy"
+                    onerror="this.onerror=null;this.src='https://via.placeholder.com/400x225?text=React+Summit+2026';">
+                  <div class="play-button-overlay">
+                    <ion-icon name="calendar-outline" class="play-icon"></ion-icon>
+                  </div>
+                </figure>
+                <div class="talk-content">
+                  <div class="talk-meta">
+                    <p class="talk-category">React Summit 2026 · Upcoming workshop</p>
+                    <span class="dot"></span>
+                    <time datetime="2026-05-14">May 14, 2026</time>
+                  </div>
+                  
+                  <h3 class="h3 talk-item-title">From Async Chaos to Deterministic React: Hands-On State Machine Architecture for Real-Time Systems</h3>
+                  <p class="talk-text">
+                    Remote hands-on session on GitNation: refactor a fragile async React setup into a deterministic, state-machine-driven architecture for real-time systems—streaming, concurrency, and predictable UI without tying the lesson to one library.
+                  </p>
+                  <div class="talk-meta">
+                    <p class="talk-category">React · State Machines · BLE</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="talk-post-item">
+              <a href="https://gitnation.com/contents/architecting-reliable-react-systems-in-unreliable-environments" target="_blank" rel="noopener noreferrer" class="talk-link">
+                <figure class="talk-banner-box">
+                  <img src="https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/v1619376923/fszvxiu9y2alolt9eymk.jpg?auto=format,compress&amp;fit=scale&amp;w=300"
+                    alt="React Summit 2026 — Architecting Reliable React Systems in Unreliable Environments" loading="lazy"
+                    onerror="this.onerror=null;this.src='https://via.placeholder.com/400x225?text=React+Summit+2026';">
+                  <div class="play-button-overlay">
+                    <ion-icon name="mic-outline" class="play-icon"></ion-icon>
+                  </div>
+                </figure>
+                <div class="talk-content">
+                  <div class="talk-meta">
+                    <p class="talk-category">React Summit 2026 · Upcoming talk</p>
+                    <span class="dot"></span>
+                    <time datetime="2026-06-11">June 11–15, 2026</time>
+                  </div>
+                 
+                  <h3 class="h3 talk-item-title">Architecting Reliable React Systems in Unreliable Environments</h3>
+                  <p class="talk-text">
+                    When UIs meet unreliable backends—streaming, AI pipelines, or hardware that drops without warning—how do you keep React state honest? A production-minded look at resilient React Native architecture using Bluetooth as a stress test: deterministic transitions, fewer races, and UI that matches messy reality. Session time TBA; recording follows the conference.
+                  </p>
+                  <div class="talk-meta">
+                    <p class="talk-category">React · State Machines · Architecture</p>
+                  </div>
+                </div>
+                
+              </a>
+            </li>
             <li class="talk-post-item">
               <a href="https://gitnation.com/contents/seamless-ble-to-live-activity-sync-in-react-native-no-push-needed" target="_blank" rel="noopener noreferrer" class="talk-link">
                 <figure class="talk-banner-box">
@@ -794,14 +849,18 @@
                 </figure>
                 <div class="talk-content">
                   <div class="talk-meta">
-                    <p class="talk-category">React Native · BLE</p>
+                    <p class="talk-category">React Summit 2025</p>
                     <span class="dot"></span>
                     <time datetime="2025-11-21">November 21, 2025</time>
                   </div>
+                 
                   <h3 class="h3 talk-item-title">Seamless BLE-to-Live Activity Sync in React Native — No Push Needed</h3>
                   <p class="talk-text">
                     Learn how to connect Bluetooth Low Energy devices directly to iOS Live Activities in React Native without push notifications, using a custom native module and ActivityKit to stream real-time updates to the lock screen and Dynamic Island.
                   </p>
+                  <div class="talk-meta">
+                    <p class="talk-category">React Native · BLE</p>
+                  </div>
                 </div>
               </a>
             </li>
@@ -817,7 +876,7 @@
                 </figure>
                 <div class="talk-content">
                   <div class="talk-meta">
-                    <p class="talk-category">iOS BLE Development</p>
+                    <p class="talk-category">San Diego iOS Meetup</p>
                     <span class="dot"></span>
                     <time datetime="2025-09-09">September 9, 2025</time>
                   </div>
@@ -825,6 +884,9 @@
                   <p class="talk-text">
                     Learn how to implement iOS as a BLE Central device to connect with Mac peripherals and nRF52 development boards. This tutorial covers Core Bluetooth setup, device discovery, and establishing reliable connections.
                   </p>
+                  <div class="talk-meta">
+                    <p class="talk-category">iOS · BLE</p>
+                  </div>
                 </div>
               </a>
             </li>
@@ -840,14 +902,18 @@
                 </figure>
                 <div class="talk-content">
                   <div class="talk-meta">
-                    <p class="talk-category">BLE Development</p>
+                    <p class="talk-category">DevX San Diego Meetup</p>
                     <span class="dot"></span>
                     <time datetime="2025-08-24">August 24, 2025</time>
                   </div>
+                 
                   <h3 class="h3 talk-item-title">Building Apps for BLE Devices</h3>
                   <p class="talk-text">
                     Discover the essential techniques for developing robust mobile applications that seamlessly connect with Bluetooth Low Energy devices. Learn about device discovery, connection management, data exchange, and handling real-world connectivity challenges.
                   </p>
+                  <div class="talk-meta">
+                    <p class="talk-category">BLE · React Native</p>
+                  </div>
                 </div>
               </a>
             </li>

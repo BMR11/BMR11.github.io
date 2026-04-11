@@ -140,6 +140,11 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
+function getNavTargetPage(link) {
+  const raw = link.dataset.navTarget || link.textContent || "";
+  return raw.trim().toLowerCase();
+}
+
 // Navigate to a specific page/section
 function navigateToPage(pageName, updateHistory = true) {
   const targetPage = pageName.toLowerCase();
@@ -154,7 +159,7 @@ function navigateToPage(pageName, updateHistory = true) {
   
   // Update active state on nav links
   navigationLinks.forEach(link => {
-    if (link.innerHTML.trim().toLowerCase() === targetPage) {
+    if (getNavTargetPage(link) === targetPage) {
       link.classList.add("active");
     } else {
       link.classList.remove("active");
@@ -208,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-    const pageName = this.innerHTML.trim().toLowerCase();
+    const pageName = getNavTargetPage(this);
     navigateToPage(pageName, true);
   });
 }
