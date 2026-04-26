@@ -1267,7 +1267,7 @@ main {
 }
 
 .talk-banner-box.split img {
-  width: min(62%, 360px);
+  width: min(52%, 300px);
   height: 100%;
   object-fit: contain;
   object-position: left center;
@@ -1306,8 +1306,8 @@ main {
 .talk-banner-badge-text {
   line-height: 1;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
+  text-overflow: clip;
 }
 
 .talk-banner-badge-logo {
