@@ -1267,14 +1267,16 @@ main {
 }
 
 .talk-banner-box.split img {
-  width: min(52%, 300px);
+  flex: 1 1 auto;
+  width: auto;
+  max-width: 280px;
   height: 100%;
   object-fit: contain;
   object-position: left center;
 }
 
 .talk-banner-aside {
-  flex: 1;
+  flex: 0 0 auto;
   min-width: 0;
   display: flex;
   align-items: flex-start;
